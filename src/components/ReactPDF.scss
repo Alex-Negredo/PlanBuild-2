@@ -1,0 +1,15 @@
+.pdf {
+    border: 5px purple solid;
+
+    &__controls {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__view-container {
+        border: 2px solid red;
+        width: 99vw;
+        height: 85vh;
+        overflow: hidden;
+    }
+} 
