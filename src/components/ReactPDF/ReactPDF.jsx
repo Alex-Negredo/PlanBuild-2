@@ -3,6 +3,9 @@ import { Document, Page } from 'react-pdf';
 import { pdfjs } from 'react-pdf';
 import "./ReactPDF.scss";
 
+// import samplePDF from '../../assets/statement.pdf';
+import samplePDF from '../../assets/butterfly.pdf';
+
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   'pdfjs-dist/build/pdf.worker.min.js',
   import.meta.url,
@@ -10,14 +13,15 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 
 function ReactPDF() {
   
-  const [numPages, setNumPages] = useState(null); // will hold null because we can have n pages
+  const [totalPages, setTotalPages] = useState(null); // will hold null because we can have n pages
   const [pageNumber, setPageNumber] = useState(1); // will hold 1 because it should always start with page 1
   const [scale, setScale] = useState(1); // 1 is the standard
   const [rotationAngle, setRotationAngle] = useState(0);
 
   // function to handle what happen when the page loads
-  function onDocumentLoadSuccess({ numPages }) {
-    setNumPages(numPages);
+  const onDocumentLoadSuccess = ({numPages}) => {
+    setTotalPages(numPages);
+    console.log('total pages:', numPages)
   }
 
   // function to handle zooming
@@ -44,8 +48,6 @@ function ReactPDF() {
 
   const rotate = () => {
     setRotationAngle(rotationAngle + 90);
-    console.log("pic should been rotated");
-    console.log(rotationAngle);
   }
 
   const handleZoom = (e) => {
@@ -61,7 +63,7 @@ function ReactPDF() {
     <section className='pdf' >
 
       <div className='pdf__controls' >
-        <div className='pdf__pages' > Page {pageNumber} of {numPages} </div>
+        <div className='pdf__pages' > Page {pageNumber} of {totalPages} </div>
         <div className='pdf__scale' > Scale {100*scale}% </div>
         <button className='pdf__page-back' onClick={prevPage} > ◀ Back </button>
         <button className='pdf__page-next' onClick={nextPage} > Next ▶ </button>
@@ -71,13 +73,13 @@ function ReactPDF() {
       </div>
 
       <div className='pdf__view-container' onWheel={handleZoom} >
-        <Document file="/butterfly.pdf" onLoadSuccess={onDocumentLoadSuccess}>
+        <Document file={samplePDF} onLoadSuccess={onDocumentLoadSuccess}>
           <Page pageNumber={pageNumber} scale={scale} rotate={rotationAngle} />
         </Document>
       </div>
 
     </section>
-  );
+  ); 
 }
 
 export default ReactPDF;
