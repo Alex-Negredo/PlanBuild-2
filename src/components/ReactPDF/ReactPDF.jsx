@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Document, Page } from 'react-pdf';
 import { pdfjs } from 'react-pdf';
+
 import "./ReactPDF.scss";
 
 // import samplePDF from '../../assets/statement.pdf';
@@ -13,12 +14,18 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 
 function ReactPDF() {
   
+  const [file, setFile] = useState(null);
   const [totalPages, setTotalPages] = useState(null); // will hold null because we can have n pages
   const [pageNumber, setPageNumber] = useState(1); // will hold 1 because it should always start with page 1
   const [scale, setScale] = useState(1); // 1 is the standard
   const [rotationAngle, setRotationAngle] = useState(0);
 
   // function to handle what happen when the page loads
+  useEffect(() => {
+    // set the initial file when the component mounts
+    setFile(samplePDF);
+  },[]); // empty dependency array ensures this effect runs only once.
+
   const onDocumentLoadSuccess = ({numPages}) => {
     setTotalPages(numPages);
     console.log('total pages:', numPages)
@@ -59,6 +66,12 @@ function ReactPDF() {
     }
   }
 
+  const handleUpload = (e) => {
+    const uploadedFile = e.target.files[0];
+    setFile(uploadedFile);
+    setPageNumber(1);
+  };
+
   return (
     <section className='pdf' >
 
@@ -70,10 +83,11 @@ function ReactPDF() {
         <button className='pdf__zoom-out' onClick={zoomOut} > Zoom Out ➖ </button>
         <button className='pdf__zoom-in' onClick={zoomIn} > Zoom In ➕ </button>
         <button className='pdf__rotate-clockwise' onClick={rotate} > Rotate 🔄 </button>
+        <input type='file' accept='.pdf' onChange={handleUpload} placeholder='UPLOAD' />
       </div>
 
       <div className='pdf__view-container' onWheel={handleZoom} >
-        <Document file={samplePDF} onLoadSuccess={onDocumentLoadSuccess}>
+        <Document file={file} onLoadSuccess={onDocumentLoadSuccess}>
           <Page pageNumber={pageNumber} scale={scale} rotate={rotationAngle} />
         </Document>
       </div>
