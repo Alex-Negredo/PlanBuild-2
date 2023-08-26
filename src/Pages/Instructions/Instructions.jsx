@@ -63,7 +63,7 @@ const handleSelectedFile = (instructionId) => {
                 <div className='si__projects-listing'>{instruction.title}</div>
                 <div className='si__projects-listing'>{instruction.createdBy}</div>
                 <div className='si__projects-listing'>{instruction.trade}</div>
-                <div className='si__projects-listing'>{instruction.timestamp}</div>
+                <div className='si__projects-listing'>{instruction.dateIssued}</div>
               </Link>
             </li>
             
