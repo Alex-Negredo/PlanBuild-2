@@ -1,0 +1,23 @@
+.header {
+    width: 100%;
+    height: 40px;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    
+    &__link {
+        height: 30px;
+        margin: auto 0;
+    }
+    
+    &__logo {
+        height: 30px;
+        margin: auto 10px;
+    }
+
+    &__username {
+        color: white;
+        margin: auto 10px;
+    }
+
+}

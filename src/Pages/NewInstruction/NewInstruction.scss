@@ -1,0 +1,18 @@
+.new-si {
+    
+    &__form {
+        display: flex;
+    }
+
+    &__inputs {
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+    }
+
+    &__buttons{
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+    }
+}

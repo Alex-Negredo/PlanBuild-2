@@ -1,24 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Document, Page } from 'react-pdf';
 import { pdfjs } from 'react-pdf';
 
-import "./ReactPDF.scss";
+import "./DrawingViewer.scss";
 
-// import samplePDF from '../../assets/statement.pdf';
-import samplePDF from '../../assets/butterfly.pdf';
+import samplePDF from '../../assets/statement.pdf';
+// import samplePDF from '../../assets/butterfly.pdf';
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   'pdfjs-dist/build/pdf.worker.min.js',
   import.meta.url,
 ).toString();
 
-function ReactPDF() {
+function DrawingViewer() {
   
   const [file, setFile] = useState(null);
   const [totalPages, setTotalPages] = useState(null); // will hold null because we can have n pages
   const [pageNumber, setPageNumber] = useState(1); // will hold 1 because it should always start with page 1
   const [scale, setScale] = useState(1); // 1 is the standard
   const [rotationAngle, setRotationAngle] = useState(0);
+  const [instructions, setInstructions] = useState([]);
+  const [selectedFile, setSelectedFile] = useState();
 
   // function to handle what happen when the page loads
   useEffect(() => {
@@ -96,4 +98,4 @@ function ReactPDF() {
   ); 
 }
 
-export default ReactPDF;
+export default DrawingViewer;
