@@ -15,7 +15,7 @@ function App() {
       <Routes>
         <Route path='/projects/instructions' element={<Instructions />} />
         <Route path='/projects/instructions/1' element={<PDFViewerTest />} />
-        <Route path='/projects/instructions/:instructionId' element={<PDFViewer />} />
+        <Route path='/projects/instructions/:id' element={<PDFViewer />} />
         <Route path='/projects/instructions/new' element={<NewInstruction />} />
       </Routes>
     </BrowserRouter>

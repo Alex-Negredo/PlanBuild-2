@@ -7,26 +7,12 @@ import axios from 'axios';
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 
-import fileUrl from '../../assets/butterfly.pdf';
 
-export default function PDFViewer() {
+export default function PDFViewer(props) {
 
     const [instructions, setInstructions] = useState(null)
     const [selectedInstruction, setSelectedInstruction] = useState(null);
     const { id } = useParams();
-
-
-    // render the PDF stored in the backend
-    useEffect( () => {
-        if (selectedInstruction) {
-            axios.get(`http://localhost:8080/projects/:id/instructions/${id}`)
-            .then(res => {
-                setSelectedInstruction(res.data)
-                console.log(res.data)
-            })
-            .catch(err => console.error('Esse é o erro fetching o SI selecionado', err));
-        }
-    }, [id])
 
 
     const defaultLayoutPluginInstance = defaultLayoutPlugin();
@@ -35,14 +21,13 @@ export default function PDFViewer() {
     <div>
 
         <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
-            {selectedInstruction ? (
+            {props.selectedInstruction ? (
             <div style={{
                 height: '900px',
                 margin: 'auto'
                 }} >
                 <Viewer 
-                    fileUrl={fileUrl}
-                    // fileUrl="public/1693199004662_butterfly.pdf"
+                    fileUrl={props.selectedInstruction.path}
                     defaultScale={SpecialZoomLevel.PageFit}
                     plugins={[defaultLayoutPluginInstance,]}
                 /> 
