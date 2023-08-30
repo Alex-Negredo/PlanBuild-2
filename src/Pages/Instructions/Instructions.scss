@@ -73,6 +73,7 @@
 
     &__projects__list {
         list-style: none;
+        display: flex; // change when activate the <Link > element
     }
 
     &__projects__list:hover {

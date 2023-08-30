@@ -44,16 +44,16 @@ const NewInstruction = () => {
         formData.append('trade', trade);
         formData.append('dateIssued', dateIssued);
 
-        axios.post('http://localhost:8080/instructions', formData)
+        axios.post('http://localhost:8080/projects/instructions', formData)
         .then(res => {
             setInstructions(res.data)
-            navigate('/:projects/instructions');
+            navigate('/projects/instructions');
         }) 
         .catch(err => console.error('Esse é o erro:', err))
     }
 
     const backToSIList = () => {
-        navigate('/:projects/instructions');
+        navigate('/projects/instructions');
     }
     
     const handleSubmit = (e) => {
