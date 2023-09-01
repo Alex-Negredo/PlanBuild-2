@@ -11,6 +11,9 @@ const NewInstruction = () => {
     const [createdBy, setCreatedBy] = useState('');
     const [trade, setTrade] = useState('');
     const [dateIssued, setDateIssued] = useState('');
+    const [status, setStatus] = useState('');
+    const [type, setType] = useState('');
+    const [costImpact, setCostImpact] = useState('');
     const navigate = useNavigate();
     const formRef = useRef();
 
@@ -33,6 +36,18 @@ const NewInstruction = () => {
     const handleDateIssuedChange = (e) => {
         setDateIssued(e.target.value);
     }
+    
+    const handleStatusChange = (e) => {
+        setDateIssued(e.target.value);
+    }
+    
+    const handleTypeChange = (e) => {
+        setDateIssued(e.target.value);
+    }
+    
+    const handleCostImpactChange = (e) => {
+        setDateIssued(e.target.value);
+    }
 
     
     const upload = () => {
@@ -43,6 +58,9 @@ const NewInstruction = () => {
         formData.append('createdBy', createdBy);
         formData.append('trade', trade);
         formData.append('dateIssued', dateIssued);
+        formData.append('status', status);
+        formData.append('type', type);
+        formData.append('costImpact', costImpact);
 
         axios.post('http://localhost:8080/projects/instructions', formData)
         .then(res => {
@@ -80,6 +98,12 @@ const NewInstruction = () => {
                     <input type="text" value={trade} onChange={handleTradeChange}></input>
                     <label className="new-si__label">Date Issued</label>
                     <input type="text" value={dateIssued} onChange={handleDateIssuedChange}></input>
+                    <label className="new-si__label">Status</label>
+                    <input type="text" value={status} onChange={handleStatusChange}></input>
+                    <label className="new-si__label">Type</label>
+                    <input type="text" value={type} onChange={handleTypeChange}></input>
+                    <label className="new-si__label">Cost Impact</label>
+                    <input type="text" value={costImpact} onChange={handleCostImpactChange}></input>
                 </div>
                 <div className="new-si__buttons">
                     <input type='file' accept='.pdf' onChange={(e) => setInstructions(e.target.files[0])} />
