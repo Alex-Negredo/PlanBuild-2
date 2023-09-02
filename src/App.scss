@@ -1,3 +1,6 @@
+@import "./styles/partials/abstracts";
+@import './components/Header/Header.scss';
+
 *, *::before, *::after {box-sizing: border-box;};
 
 // * {

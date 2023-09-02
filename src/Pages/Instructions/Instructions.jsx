@@ -32,7 +32,6 @@ const handleInstructionClick = (id) => {
   })
 }
 
-
   return (
     <section className='si'>
 
@@ -41,16 +40,12 @@ const handleInstructionClick = (id) => {
         <SideBar />
         <div className="si__master-container">
         
-
-            {/* <div className="si__list-viewer-container"> */}
-        
               <h2 className='si__project-name'> props.project name </h2>
               <h1 className='si__title'>SITE INSTRUCTIONS</h1>
 
               <Link to="/projects/instructions/new" className="si__button-link">
                 <button className="si__button">Create</button>
               </Link>
-            {/* </div>  */}
           
             <hr className="si__hr"/>
 
@@ -62,7 +57,6 @@ const handleInstructionClick = (id) => {
               <div className='si__header-label'>Date Issued</div>
               <div className='si__header-label'>Status</div>
               <div className='si__header-label'>Type</div>
-              <div className='si__header-label si__header-label-costImpact'>Cost Impact</div>
             </div>
 
             <ul className='si__projects'>
@@ -76,7 +70,6 @@ const handleInstructionClick = (id) => {
                       <div className='si__projects-listing'>{instruction.dateIssued}</div>
                       <div className='si__projects-listing'>{instruction.status}</div>
                       <div className='si__projects-listing'>{instruction.type}</div>
-                      <div className='si__projects-listing si__projects-listing-costImpact'>{instruction.costImpact}</div>
                     </Scroll>
                 </li>
               ))}      

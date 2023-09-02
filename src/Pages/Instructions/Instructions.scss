@@ -11,9 +11,8 @@
     }
 
     &__project-name {
-        color: #5F616E;
+        color: #5f616e;
         font-family: Inter;
-        font-size: 24px;
         font-style: normal;
         font-weight: 400;
         line-height: 155.2%; /* 37.248px */;
@@ -22,7 +21,6 @@
     &__title {
         color: rgba(0, 115, 251, 0.85);
         font-family: Inter;
-        font-size: 45px;
         font-style: normal;
         font-weight: 700;
         line-height: 155.2%; /* 69.84px */
@@ -45,7 +43,8 @@
 
     &__hr {
         height: 2px;
-        background-color: #C0C0C0;
+        width: 100%;
+        background-color: #aeafb3;
         border: none;
     }
 
@@ -53,13 +52,13 @@
         display: flex;
         flex-direction: column;
         width: 100%;
-        padding: 0;
+        margin: 0 2.5%;
     }
-
+    
     &__header {
         display: flex;
-        justify-content: space-between;
         width: 100%;
+        margin-left: 20px;
     }
 
     &__header-label {
@@ -69,7 +68,19 @@
         font-style: normal;
         font-weight: 700;
         line-height: 155.2%; /* 37.248px */
-        width: 10%;
+        width: 12.5%;
+    }
+        
+    &__projects-listing {
+        list-style: none;
+        color: #000;
+        font-family: Inter;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 155.2%; /* 37.248px */
+        width: 12.5%;
+        margin: 5px 0 5px 20px;
     }
 
     &__list-viewer-container {
@@ -99,6 +110,7 @@
 
     &__projects__list:hover {
         background-color: #e2e2e2;
+        border-radius: 20px;
     }
 
     &__projects__container {
@@ -107,33 +119,15 @@
         text-decoration: none;
     }
     
-    &__projects-listing {
-        list-style: none;
-        color: #000;
-        font-family: Inter;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 155.2%; /* 37.248px */
-        justify-content: left;
-        width: 10%;
-    }
 
 
     &__projects-listing-number, &__header-label-number  {
-        width: 10%;
+        width: 5%;
+
     }
 
     &__projects-listing-title, &__header-label-title {
-        width: 30%;
-    }
-    
-    &__projects-listing-status, &__header-label-status {
-        width: 10%;
-    }
-
-    &__projects-listing-costImpact, &__header-label-costImpact {
-        width: 10%;
+        width: 32.5%;
     }
 }
 

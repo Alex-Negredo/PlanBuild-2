@@ -1,7 +1,23 @@
+@use "../../styles/partials/abstracts" as *;
+
 .new-si {
+    display: flex;
+    background: #F5F5F5;
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 0 2.5%;
+    }
+
+    &__title {
+        color: $primary-color-2;
+    }
     
     &__form {
         display: flex;
+        width: 100%;
     }
 
     &__inputs {
@@ -10,9 +26,36 @@
         width: 70%;
     }
 
+    &__input-fields {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 0 0 20px 0;
+        height: 25px;
+    }
+
+    &__label {
+        color: $primary-color-1;
+        font-size: 1.125rem; // 18px
+        font-style: normal;
+        font-weight: 700;
+        line-height: 155.2%; /* 37.248px */
+    }
+
     &__buttons{
         display: flex;
         flex-direction: column;
         width: 30%;
+    }
+
+    &__upload {
+        display: none;
+    }
+
+    &__button-upload {
+        cursor: pointer;
+        font: inherit;
+        min-height: 48px;
+        min-width: 48px;
     }
 }

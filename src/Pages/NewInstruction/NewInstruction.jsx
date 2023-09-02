@@ -1,7 +1,8 @@
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import "./NewInstruction.scss";
 import axios from "axios";
+import SideBar from "../../components/SideBar/SideBar";
+import "./NewInstruction.scss";
 
 const NewInstruction = () => {
 
@@ -13,7 +14,6 @@ const NewInstruction = () => {
     const [dateIssued, setDateIssued] = useState('');
     const [status, setStatus] = useState('');
     const [type, setType] = useState('');
-    const [costImpact, setCostImpact] = useState('');
     const navigate = useNavigate();
     const formRef = useRef();
 
@@ -38,15 +38,11 @@ const NewInstruction = () => {
     }
     
     const handleStatusChange = (e) => {
-        setDateIssued(e.target.value);
+        setStatus(e.target.value);
     }
     
     const handleTypeChange = (e) => {
-        setDateIssued(e.target.value);
-    }
-    
-    const handleCostImpactChange = (e) => {
-        setDateIssued(e.target.value);
+        setType(e.target.value);
     }
 
     
@@ -60,7 +56,6 @@ const NewInstruction = () => {
         formData.append('dateIssued', dateIssued);
         formData.append('status', status);
         formData.append('type', type);
-        formData.append('costImpact', costImpact);
 
         axios.post('http://localhost:8080/projects/instructions', formData)
         .then(res => {
@@ -81,29 +76,28 @@ const NewInstruction = () => {
 
     return (
 
-        <div>
-
+        <div className="new-si">
+        <SideBar/>
+        <div className="new-si__container">
             <h2 className='new-si__project-name'> props.project name </h2>
-            <h1 className='new-si__title'>New Site Instruction</h1>
+            <h1 className='new-si__title'>NEW SITE INSTRUCTION</h1>
 
             <form ref={formRef} onSubmit={handleSubmit} className="new-si__form">
                 <div className="new-si__inputs">
                     <label className="new-si__label">#</label>
-                    <input type="text" value={number} onChange={handleNumberChange}></input>
+                    <input type="text" value={number} onChange={handleNumberChange} className="new-si__input-fields"></input>
                     <label className="new-si__label">Title</label>
-                    <input type="text" value={title} onChange={handleTitleChange}></input>
+                    <input type="text" value={title} onChange={handleTitleChange} className="new-si__input-fields"></input>
                     <label className="new-si__label">Created by</label>
-                    <input type="text" value={createdBy} onChange={handleCreatedByChange}></input>
+                    <input type="text" value={createdBy} onChange={handleCreatedByChange} className="new-si__input-fields"></input>
                     <label className="new-si__label">Trade</label>
-                    <input type="text" value={trade} onChange={handleTradeChange}></input>
+                    <input type="text" value={trade} onChange={handleTradeChange} className="new-si__input-fields"></input>
                     <label className="new-si__label">Date Issued</label>
-                    <input type="text" value={dateIssued} onChange={handleDateIssuedChange}></input>
+                    <input type="text" value={dateIssued} onChange={handleDateIssuedChange} className="new-si__input-fields"></input>
                     <label className="new-si__label">Status</label>
-                    <input type="text" value={status} onChange={handleStatusChange}></input>
+                    <input type="text" value={status} onChange={handleStatusChange} className="new-si__input-fields"></input>
                     <label className="new-si__label">Type</label>
-                    <input type="text" value={type} onChange={handleTypeChange}></input>
-                    <label className="new-si__label">Cost Impact</label>
-                    <input type="text" value={costImpact} onChange={handleCostImpactChange}></input>
+                    <input type="text" value={type} onChange={handleTypeChange} className="new-si__input-fields"></input>
                 </div>
                 <div className="new-si__buttons">
                     <input type='file' accept='.pdf' onChange={(e) => setInstructions(e.target.files[0])} />
@@ -113,6 +107,7 @@ const NewInstruction = () => {
                     </div>
                 </div>
             </form>
+        </div>
         </div>
     )
 }
