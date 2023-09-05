@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import SideBar from "../../components/Sidebar/Sidebar";
+import Sidebar from "../../components/Sidebar/Sidebar";
 import "./NewInstruction.scss";
 
 const NewInstruction = () => {
@@ -78,7 +78,7 @@ const NewInstruction = () => {
     return (
 
         <div className="new-si">
-        <SideBar/>
+        <Sidebar/>
         <div className="new-si__container">
             <h2 className='new-si__project-name'> props.project name </h2>
             <h1 className='new-si__title'>NEW SITE INSTRUCTION</h1>
