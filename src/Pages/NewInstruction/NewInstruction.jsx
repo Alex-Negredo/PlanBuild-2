@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import SideBar from "../../components/SideBar/SideBar";
+import SideBar from "../../components/Sidebar/Sidebar";
 import "./NewInstruction.scss";
 
 const NewInstruction = () => {
@@ -16,6 +16,7 @@ const NewInstruction = () => {
     const [type, setType] = useState('');
     const navigate = useNavigate();
     const formRef = useRef();
+    const { projectId } = useParams();
 
     const handleNumberChange = (e) => {
         setNumber(e.target.value);
@@ -57,16 +58,16 @@ const NewInstruction = () => {
         formData.append('status', status);
         formData.append('type', type);
 
-        axios.post('http://localhost:8080/projects/instructions', formData)
+        axios.post(`http://localhost:8080/projects/${projectId}/instructions`, formData)
         .then(res => {
             setInstructions(res.data)
-            navigate('/projects/instructions');
+            navigate(`/projects/${projectId}/instructions`);
         }) 
         .catch(err => console.error('Esse é o erro:', err))
     }
 
     const backToSIList = () => {
-        navigate('/projects/instructions');
+        navigate(`/projects/${projectId}/instructions`);
     }
     
     const handleSubmit = (e) => {

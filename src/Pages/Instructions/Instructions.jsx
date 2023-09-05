@@ -3,23 +3,33 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { Link as Scroll } from "react-scroll";
 import PDFViewer from "../../components/PDFViewer/PDFViewer";
-import "./Instructions.scss";
 import { useNavigate, useParams } from "react-router-dom";
-import SideBar from "../../components/SideBar/SideBar";
+import "./Instructions.scss";
+// import Sidebar from '../../components/Sidebar/Sidebar';
 
 function Instructions() {
 
+const { projectId } = useParams();
+const [projects, setProjects] = useState([]);
 const [instructions, setInstructions] = useState([]);
 const [selectedInstruction, setSelectedInstruction] = useState();
 
+useEffect( () => {
+  axios.get(`http://localhost:8080/projects`)
+  .then(res => {
+    setProjects(res.data);
+    console.log(res.data);
+  })
+  .catch(err => {console.log('my error getting projects is', err)})
+}, [])
 
 useEffect( () => {
-  axios.get(`http://localhost:8080/projects/instructions`)
+  axios.get(`http://localhost:8080/projects/${projectId}/instructions`)
   .then(res => {
     setInstructions(res.data);
     console.log(res.data);
   })
-  .catch(err => {console.log('my error is', err)})
+  .catch(err => {console.log('error getting all instructions', err)})
 }, [])
 
 
@@ -37,13 +47,13 @@ const handleInstructionClick = (id) => {
 
       <div className='si__container' >
         
-        <SideBar />
+        {/* <Sidebar /> */}
         <div className="si__master-container">
         
               <h2 className='si__project-name'> props.project name </h2>
               <h1 className='si__title'>SITE INSTRUCTIONS</h1>
 
-              <Link to="/projects/instructions/new" className="si__button-link">
+              <Link to={`/projects/${projectId}/instructions/new`} className="si__button-link">
                 <button className="si__button">Create</button>
               </Link>
           
