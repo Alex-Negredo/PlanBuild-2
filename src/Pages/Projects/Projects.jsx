@@ -6,7 +6,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import "./Projects.scss";
-// import Sidebar from '../../components/Sidebar/Sidebar';
+import Header from "../../components/Header/Header";
+import Instructions from "../Instructions/Instructions";
 
 function Projects() {
 
@@ -38,8 +39,10 @@ const handleProjectClick = (id) => {
   return (
     <section className='projects'>
 
+      <Header  />
+
       <div className='projects__container' >
-        <Sidebar setSelectedProject={setSelectedProject} />
+        <Sidebar selectedProject={selectedProject} />
         <div className="projects__master-container">
               <h1 className='projects__title'>PROJECTS</h1>
 
@@ -77,7 +80,6 @@ const handleProjectClick = (id) => {
 
           </div>  
         </div>
-
     </section>
   ); 
 }

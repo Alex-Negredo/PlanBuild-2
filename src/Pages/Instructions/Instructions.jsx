@@ -3,17 +3,22 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { Link as Scroll } from "react-scroll";
 import PDFViewer from "../../components/PDFViewer/PDFViewer";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import Sidebar from '../../components/Sidebar/Sidebar';
+import Header from "../../components/Header/Header";
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import "./Instructions.scss";
-// import Sidebar from '../../components/Sidebar/Sidebar';
 
 function Instructions() {
 
 const { projectId } = useParams();
-const [projects, setProjects] = useState([]);
+const [projects, setProjects] = useState([]); 
+const [selectedProject, setSelectedProject] = useState();
 const [instructions, setInstructions] = useState([]);
 const [selectedInstruction, setSelectedInstruction] = useState();
 
+// Fetch all projects
 useEffect( () => {
   axios.get(`http://localhost:8080/projects`)
   .then(res => {
@@ -23,6 +28,19 @@ useEffect( () => {
   .catch(err => {console.log('my error getting projects is', err)})
 }, [])
 
+
+// grab the projectId from the URL and fetch the projects and set selectedProject
+useEffect(() => {
+  axios.get(`http://localhost:8080/projects/${projectId}`)
+  .then(res => {
+    setSelectedProject(res.data);
+    console.log('selected project is', res.data);
+  })
+  .catch(err => {console.log('error getting selected project', err)})
+}, [projectId])
+
+
+// Fetch all instructions for the selected project
 useEffect( () => {
   axios.get(`http://localhost:8080/projects/${projectId}/instructions`)
   .then(res => {
@@ -30,7 +48,7 @@ useEffect( () => {
     console.log(res.data);
   })
   .catch(err => {console.log('error getting all instructions', err)})
-}, [])
+}, [projectId])
 
 
 // handle the click on the instruction and return the selected instruction
@@ -44,13 +62,13 @@ const handleInstructionClick = (id) => {
 
   return (
     <section className='si'>
-
+      <Header />
       <div className='si__container' >
         
-        {/* <Sidebar /> */}
+        <Sidebar />
         <div className="si__master-container">
-        
-              <h2 className='si__project-name'> props.project name </h2>
+
+              <h2 className='si__project-name'> {selectedProject?.name} {'>'} Instructions </h2>
               <h1 className='si__title'>SITE INSTRUCTIONS</h1>
 
               <Link to={`/projects/${projectId}/instructions/new`} className="si__button-link">
@@ -84,6 +102,11 @@ const handleInstructionClick = (id) => {
                 </li>
               ))}      
             </ul>
+            
+            <div className="si__projects-nav-container">
+              <div className="si__projects-total">Showing 1 - {selectedProject?.instructions.length} of {selectedProject?.instructions.length} </div>
+              <div className="si__projects-navigation"><NavigateBeforeIcon /> 1 of 1 <NavigateNextIcon /></div>
+            </div>
 
           </div>  
         </div>

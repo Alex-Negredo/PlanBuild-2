@@ -1,16 +1,17 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import HomePic from '../../assets/Project Home.svg';
+import Header from '../Header/Header';
 import Sidebar from '../Sidebar/Sidebar';
 import './ProjectHome.scss';
 
-const ProjectHome = () => {
+const ProjectHome = (props) => {
 
     return (
-        <div className='project__master-container'>
-            <Sidebar />
-            <div>ProjectHome</div>
+        <div>
+            <Header />
+            <div className='project__master-container'>
+                <Sidebar  />
+                <img src={HomePic} alt="Project Home" className="project__home-pic"/>
+            </div>
         </div>
     )
 }

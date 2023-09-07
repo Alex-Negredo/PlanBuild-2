@@ -6,14 +6,14 @@ import PDFViewer from './components/PDFViewer/PDFViewer';
 import NewInstruction from './Pages/NewInstruction/NewInstruction';
 import Projects from './Pages/Projects/Projects';
 import ProjectHome from './components/ProjectHome/ProjectHome';
+import Home from './Pages/Home/Home';
 import './App.scss';
 
 function App() {
   return (
     <BrowserRouter className="App">
-      <Header />
       <Routes>
-        <Route path='/' element={<Sidebar />} />
+        <Route path='/' element={<Home />} />
         <Route path='/projects' element={<Projects />} />
         <Route path='/projects/:projectId' element={<ProjectHome />} />
         <Route path='/projects/:projectId/instructions' element={<Instructions />} />

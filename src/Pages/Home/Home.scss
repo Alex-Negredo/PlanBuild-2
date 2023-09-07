@@ -1,0 +1,93 @@
+@use "../../styles/partials/abstracts" as *;
+
+.home {
+    background-image: url('../../assets/loginPage.jpg');
+    background-size: cover; /* Cover the entire page */
+    background-position: center; /* Center the image */
+    height: 100vh; /* Set the height to fill the viewport */
+
+    &__container {
+        background-color: $primary-color-4;
+        border-radius: 30px;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        display: flex;
+        flex-direction: column;
+        width: 500px;
+        height: 600px;
+        margin: 0 auto;
+        filter: drop-shadow(0px 5.084598541259766px 16.524946212768555px rgba(0, 0, 0, 0.25));
+    }
+
+    &__subcontainer {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    &__logo {
+        width: 300px;
+        display: flex;
+        margin: 50px auto;
+    }
+
+    &__welcome {
+        color: black;
+        font-size: 39.926px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+    
+    &__inputs {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    &__input {
+        height: 70px;
+        background-color: $primary-color-3;
+        margin-bottom: 20px;
+        border-radius: 40px;
+        font-size: 25px;
+        font-weight: normal;
+        border: none;
+    }
+
+    &__input::placeholder {
+        font-size: 20px;
+        padding-left: 30px;
+    }
+
+    &__forgot-password {
+        margin: 0 0 20px 250px;
+        font-weight: normal;
+    }
+
+    &__login-button {
+        margin: auto;
+        width: 100%;
+        height: 60px;
+        border-radius: 40px;
+        background-color: $primary-color-2;
+        border: none;
+        color: $primary-color-4;
+        font-size: 30px;
+        font-weight: 700;
+        letter-spacing: 6px;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    &__create-account {
+        color: #5F616E;
+        font-weight: normal;
+        margin: 20px auto;
+        text-align: center;
+    }
+}
+
+html {
+    background-color: $primary-color-3;
+}

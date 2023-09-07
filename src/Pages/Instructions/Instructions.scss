@@ -1,3 +1,5 @@
+@use "../../styles/partials/abstracts" as *;
+
 .si {
     margin: 0 auto;
     background-color: #F5F5F5;
@@ -11,11 +13,13 @@
     }
 
     &__project-name {
-        color: #5f616e;
+        color: $primary-color-5;
         font-family: Inter;
         font-style: normal;
         font-weight: 400;
-        line-height: 155.2%; /* 37.248px */;
+        line-height: 20px; 
+        font-size: 18px;
+        margin-top: 30px;
     }
 
     &__title {
@@ -39,6 +43,7 @@
         font-size: 17px;
         font-weight: 700;
         border: none;
+        cursor: pointer;
     }
 
     &__hr {
@@ -101,6 +106,7 @@
         list-style: none;
         display: flex; 
         width: 100%;
+        cursor: pointer;
     }
 
     &__projects__list__link{
@@ -118,8 +124,6 @@
         width: 100%;
         text-decoration: none;
     }
-    
-
 
     &__projects-listing-number, &__header-label-number  {
         width: 5%;
@@ -128,6 +132,44 @@
 
     &__projects-listing-title, &__header-label-title {
         width: 32.5%;
+    }
+
+    &__instructions {
+        visibility: hidden;
+    }
+
+    &__projects-nav-container {
+        display: flex;
+        height: 25px;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    &__projects-total {
+        color: $primary-color-1;
+        margin: 0 20px;
+    }
+
+    &__projects-navigation {
+        color: $primary-color-5;
+        margin-right: 35px;
+        font-size: 18px;
+        // how to align letters to the top?
+        display: flex;
+        
+    }
+
+    &__projects-navigation-left {
+        height: 80px;
+    }
+
+    &__projects-navigation-right {
+        color: $primary-color-5;
+        margin-right: 35px;
+        font-size: 18px;
+        // how to align letters to the top?
+        display: flex;
+        
     }
 }
 

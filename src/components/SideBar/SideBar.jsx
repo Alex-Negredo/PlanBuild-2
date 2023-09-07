@@ -18,14 +18,20 @@ import { useParams, redirect } from 'react-router-dom';
 import axios from 'axios';
 import './Sidebar.scss';
 
-function Sidebar() {
+function Sidebar(props) {
+
+  const { projectId } = useParams();
+  const [projects, setProjects] = useState([]);
+  const [instructions, setInstructions] = useState([]);
+  const [selectedInstruction, setSelectedInstruction] = useState();
+  const [selectedProject, setSelectedProject] = useState();
 
   return (
     <div style={{ display: "flex", height: "100vh" }}>
       <SidebarPro backgroundColor="rgb(245, 245, 245)" width="220px" className="navbar">
           <Menu>
-              <MenuItem component={<Link to="/" className="link" />} className="navbar__home" icon={<MenuRoundedIcon />} ><h3> HOME </h3></MenuItem>
-              <MenuItem component={<Link to={"projects"} />} icon={<GridViewRoundedIcon />}> Projects </MenuItem>               
+              <MenuItem component={<Link to="/projects" />} className="navbar__home" icon={<MenuRoundedIcon />} ><h3> PROJECTS </h3></MenuItem>
+              <MenuItem component={<Link to={"projects"} />} icon={<GridViewRoundedIcon />}> Drawings </MenuItem>               
               <MenuItem component={<Link to={"instructions"} />} icon={<BubbleChartRoundedIcon />}> Instructions </MenuItem>
               <MenuItem icon={<ReceiptRoundedIcon />}> RFI's </MenuItem>
               <MenuItem icon={<MonetizationOnRoundedIcon />}> Specifications </MenuItem>
@@ -40,7 +46,7 @@ function Sidebar() {
                   <MenuItem icon={<ShieldRoundedIcon />}> Privacy </MenuItem>
                   <MenuItem icon={<NotificationsRoundedIcon />}> Notifications </MenuItem>
               </SubMenu>
-              <MenuItem className='navbar__logout' icon={<LogoutRoundedIcon />}> Logout </MenuItem>
+              <MenuItem component={<Link to='/' />} className='navbar__logout' icon={<LogoutRoundedIcon />}> Logout </MenuItem>
           </Menu>
       </SidebarPro>
 
