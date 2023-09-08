@@ -2,18 +2,23 @@
 
 body {
     font-weight: 700;
-    color: $primary-color-2;
+    color: $primary-color-1;
 }
 
-.navbar {
+.sidebar {
 
-    &__home {
+    &__projects {
         margin-top: 20px;
         margin-bottom: 20px;
     }
 
-    &__logout {
-        margin-top: 250px;
+    &__menuitem:hover {
+        display: flex;
+        width: 80%;
+        height: 40px;
+        border-radius: 10px;
+        background-color: $primary-color-2;
+        margin-bottom: 10px;
+        cursor: pointer;
     }
 }
-

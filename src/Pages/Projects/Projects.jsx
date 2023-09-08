@@ -46,7 +46,7 @@ const handleProjectClick = (id) => {
         <div className="projects__master-container">
               <h1 className='projects__title'>PROJECTS</h1>
 
-              <Link to="/projects/instructions/new" className="projects__button-link">
+              <Link to="" className="projects__button-link">
                 <button className="projects__button">Create</button>
               </Link>
           

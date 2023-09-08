@@ -18,7 +18,7 @@ import { useParams, redirect } from 'react-router-dom';
 import axios from 'axios';
 import './Sidebar.scss';
 
-function Sidebar(props) {
+function Sidebar() {
 
   const { projectId } = useParams();
   const [projects, setProjects] = useState([]);
@@ -26,21 +26,59 @@ function Sidebar(props) {
   const [selectedInstruction, setSelectedInstruction] = useState();
   const [selectedProject, setSelectedProject] = useState();
 
+  // Fetch all projects
+  useEffect( () => {
+    axios.get(`http://localhost:8080/projects`)
+    .then(res => {
+      setProjects(res.data);
+      console.log(res.data);
+    })
+    .catch(err => {console.log('my error getting projects is', err)})
+  }, [])
+
+  // grab the projectId from the URL, fetch the current project and set selectedProject
+  useEffect(() => {
+    if (projectId) {
+      axios.get(`http://localhost:8080/projects/${projectId}`)
+      .then(res => {
+        setSelectedProject(res.data);
+        console.log('selected project is', res.data);
+      })
+      .catch(err => {console.log('error getting selected project', err)})
+    }}, [projectId])
+
+  // Fetch all instructions for the selected project
+  useEffect( () => {
+    if (projectId) {
+      axios.get(`http://localhost:8080/projects/${projectId}/instructions`)
+      .then(res => {
+        setInstructions(res.data);
+        console.log(res.data);
+      })
+      .catch(err => {console.log('error getting all instructions', err)})
+    }}, [projectId])
+
   return (
     <div style={{ display: "flex", height: "100vh" }}>
-      <SidebarPro backgroundColor="rgb(245, 245, 245)" width="220px" className="navbar">
+      <SidebarPro collapsed backgroundColor="rgb(230, 230, 230)" width="220px" className="sidebar">
           <Menu>
-              <MenuItem component={<Link to="/projects" />} className="navbar__home" icon={<MenuRoundedIcon />} ><h3> PROJECTS </h3></MenuItem>
-              <MenuItem component={<Link to={"projects"} />} icon={<GridViewRoundedIcon />}> Drawings </MenuItem>               
-              <MenuItem component={<Link to={"instructions"} />} icon={<BubbleChartRoundedIcon />}> Instructions </MenuItem>
-              <MenuItem icon={<ReceiptRoundedIcon />}> RFI's </MenuItem>
-              <MenuItem icon={<MonetizationOnRoundedIcon />}> Specifications </MenuItem>
-              <MenuItem icon={<AccountBalanceRoundedIcon />}> Submittals </MenuItem>
-              <MenuItem icon={<BubbleChartRoundedIcon />}> Observations </MenuItem>
-              <MenuItem icon={<ReceiptRoundedIcon />}> Inspections </MenuItem>
-              <MenuItem icon={<TimelineRoundedIcon />}> Schedules </MenuItem>
-              <MenuItem icon={<ReceiptRoundedIcon />}> Deficiency List </MenuItem>
-              <MenuItem icon={<BarChartRoundedIcon />}> Reports </MenuItem>
+              <MenuItem component={<Link to={`/projects`} />} className="sidebar__projects" icon={<MenuRoundedIcon />} ><h3> PROJECTS </h3></MenuItem>
+              
+              {selectedProject && (
+                <>
+                <MenuItem component={<Link to={`/projects/${projectId}/drawings`} />} icon={<GridViewRoundedIcon />}> Drawings </MenuItem>           
+                <MenuItem component={<Link to={`/projects/${projectId}/instructions`} />} icon={<BubbleChartRoundedIcon />}> Instructions </MenuItem>
+                <MenuItem icon={<MonetizationOnRoundedIcon />}> Specifications </MenuItem>
+                <MenuItem icon={<ReceiptRoundedIcon />}> RFI's </MenuItem>
+                <MenuItem icon={<AccountBalanceRoundedIcon />}> Submittals </MenuItem>
+                <MenuItem icon={<BubbleChartRoundedIcon />}> Observations </MenuItem>
+                <MenuItem icon={<ReceiptRoundedIcon />}> Inspections </MenuItem>
+                <MenuItem icon={<TimelineRoundedIcon />}> Schedules </MenuItem>
+                <MenuItem icon={<ReceiptRoundedIcon />}> Deficiency List </MenuItem>
+                <MenuItem icon={<BarChartRoundedIcon />}> Reports </MenuItem>
+                </>
+              )}
+
               <SubMenu label="Settings" icon={<SettingsApplicationsRoundedIcon />} >
                   <MenuItem icon={<AccountCircleRoundedIcon />}> Account </MenuItem>
                   <MenuItem icon={<ShieldRoundedIcon />}> Privacy </MenuItem>

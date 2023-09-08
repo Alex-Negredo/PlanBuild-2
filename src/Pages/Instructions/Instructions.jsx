@@ -29,7 +29,7 @@ useEffect( () => {
 }, [])
 
 
-// grab the projectId from the URL and fetch the projects and set selectedProject
+// grab the projectId from the URL, fetch the current project and set selectedProject
 useEffect(() => {
   axios.get(`http://localhost:8080/projects/${projectId}`)
   .then(res => {

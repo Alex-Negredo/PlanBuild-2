@@ -6,18 +6,26 @@
     justify-content: space-between;
     
     &__link {
-        height: 30px;
+        height: 45px;
         margin: auto 0;
     }
     
     &__logo {
+        height: 45px;
+        margin: 0 5px;
+    }
+
+    &__user {
+        display: flex;
+    }
+
+    &__pic {
         height: 30px;
-        margin: auto 10px;
+        margin: auto;
     }
 
     &__username {
         color: white;
         margin: auto 10px;
     }
-
 }

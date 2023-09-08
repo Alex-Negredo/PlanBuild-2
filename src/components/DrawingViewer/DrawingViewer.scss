@@ -1,15 +1,19 @@
-.pdf {
-    border: 5px purple solid;
+.container {
+    display: flex;
+    width: 100%;
+    padding: 0;
 
-    &__controls {
+    &__left {
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
+        width: 30%;
+        padding: 0;
     }
 
-    &__view-container {
-        border: 2px solid red;
-        width: 99vw;
-        height: 85vh;
-        overflow: hidden;
+    &__right {
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+        padding: 0;
     }
-} 
+}
