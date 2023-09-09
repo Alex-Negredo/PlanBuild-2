@@ -23,6 +23,7 @@ function Sidebar() {
   const { projectId } = useParams();
   const [projects, setProjects] = useState([]);
   const [instructions, setInstructions] = useState([]);
+  const [specifications, setSpecifications] = useState([]);
   const [selectedInstruction, setSelectedInstruction] = useState();
   const [selectedProject, setSelectedProject] = useState();
 
@@ -55,12 +56,23 @@ function Sidebar() {
         setInstructions(res.data);
         console.log(res.data);
       })
-      .catch(err => {console.log('error getting all instructions', err)})
-    }}, [projectId])
+    .catch(err => {console.log('error getting all instructions', err)})
+  }}, [projectId])
+
+  // Fetch all instructions for the selected project
+  useEffect( () => {
+    if (projectId) {
+      axios.get(`http://localhost:8080/projects/${projectId}/specifications`)
+      .then(res => {
+        setSpecifications(res.data);
+        console.log(res.data);
+      })
+      .catch(err => {console.log('error getting all specifications', err)})
+  }}, [projectId])
 
   return (
     <div style={{ display: "flex", height: "100vh" }}>
-      <SidebarPro collapsed backgroundColor="rgb(230, 230, 230)" width="220px" className="sidebar">
+      <SidebarPro backgroundColor="rgb(230, 230, 230)" width="220px" className="sidebar">
           <Menu>
               <MenuItem component={<Link to={`/projects`} />} className="sidebar__projects" icon={<MenuRoundedIcon />} ><h3> PROJECTS </h3></MenuItem>
               
@@ -68,13 +80,12 @@ function Sidebar() {
                 <>
                 <MenuItem component={<Link to={`/projects/${projectId}/drawings`} />} icon={<GridViewRoundedIcon />}> Drawings </MenuItem>           
                 <MenuItem component={<Link to={`/projects/${projectId}/instructions`} />} icon={<BubbleChartRoundedIcon />}> Instructions </MenuItem>
-                <MenuItem icon={<MonetizationOnRoundedIcon />}> Specifications </MenuItem>
-                <MenuItem icon={<ReceiptRoundedIcon />}> RFI's </MenuItem>
+                <MenuItem component={<Link to={`/projects/${projectId}/specifications`} />} icon={<ReceiptRoundedIcon />}> Specifications </MenuItem>
+                <MenuItem icon={<MonetizationOnRoundedIcon />}> RFI's </MenuItem>
                 <MenuItem icon={<AccountBalanceRoundedIcon />}> Submittals </MenuItem>
                 <MenuItem icon={<BubbleChartRoundedIcon />}> Observations </MenuItem>
                 <MenuItem icon={<ReceiptRoundedIcon />}> Inspections </MenuItem>
                 <MenuItem icon={<TimelineRoundedIcon />}> Schedules </MenuItem>
-                <MenuItem icon={<ReceiptRoundedIcon />}> Deficiency List </MenuItem>
                 <MenuItem icon={<BarChartRoundedIcon />}> Reports </MenuItem>
                 </>
               )}

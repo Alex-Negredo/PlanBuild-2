@@ -2,12 +2,13 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Instructions from './Pages/Instructions/Instructions';
 import Sidebar from './components/Sidebar/Sidebar';
-import PDFViewer from './components/PDFViewer/PDFViewer';
+import PDFViewer from './components/InstructionViewer/InstructionViewer';
 import NewInstruction from './Pages/NewInstruction/NewInstruction';
 import Projects from './Pages/Projects/Projects';
 import ProjectHome from './components/ProjectHome/ProjectHome';
 import Home from './Pages/Home/Home';
 import DrawingPage from './components/DrawingPage/DrawingPage';
+import Specifications from './Pages/Specifications/Specifications';
 import './App.scss';
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
         <Route path='/projects/:projectId/instructions' element={<Instructions />} />
         <Route path='/projects/:projectId/instructions/:instructionId' element={<PDFViewer />} />
         <Route path='/projects/:projectId/instructions/new' element={<NewInstruction />} />
-        <Route path='/projects/:projectId/specifications' element={<Instructions />} />
+        <Route path='/projects/:projectId/specifications' element={<Specifications />} />
         <Route path='/projects/:projectId/specifications/:specificationId' element={<PDFViewer />} />
       </Routes>
     </BrowserRouter>

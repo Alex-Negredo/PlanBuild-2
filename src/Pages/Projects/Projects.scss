@@ -26,8 +26,14 @@
         line-height: 155.2%; /* 69.84px */
     }
 
+    &__buttons-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
     &__button-link {
         text-decoration: none;
+        margin: auto 0;
     }
 
     &__button {
@@ -40,6 +46,33 @@
         font-weight: 700;
         border: none;
         cursor: pointer;
+    }
+
+    &__search-container {
+        display: flex;
+        align-items: center;
+        border-radius: 50px;
+        padding: 5px;
+        background-color: #fff;
+        width: 250px;
+        height: 50px;
+    }
+
+    &__input {
+        border: none;
+        width: 100%;
+        font-size: 17px;
+        border: none;
+        outline: none;
+    }
+
+    &__input::placeholder {
+        font-size: 17px;
+    }
+
+    &__icon {
+        color: #999;
+        margin-right: 2px;
     }
 
     &__hr {

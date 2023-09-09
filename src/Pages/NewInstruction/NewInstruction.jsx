@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Sidebar from "../../components/Sidebar/Sidebar";
@@ -6,7 +6,34 @@ import "./NewInstruction.scss";
 
 const NewInstruction = () => {
 
-    const [instructions, setInstructions] = useState(null);
+    const { projectId } = useParams();
+    const [projects, setProjects] = useState([]); 
+    const [selectedProject, setSelectedProject] = useState();
+    const [instructions, setInstructions] = useState([]);
+    const [selectedInstruction, setSelectedInstruction] = useState();
+
+    // Fetch all projects
+    useEffect( () => {
+    axios.get(`http://localhost:8080/projects`)
+    .then(res => {
+        setProjects(res.data);
+        console.log(res.data);
+    })
+    .catch(err => {console.log('my error getting projects is', err)})
+    }, [])
+
+
+    // grab the projectId from the URL, fetch the current project and set selectedProject
+    useEffect(() => {
+    axios.get(`http://localhost:8080/projects/${projectId}`)
+    .then(res => {
+        setSelectedProject(res.data);
+        console.log('selected project is', res.data);
+    })
+    .catch(err => {console.log('error getting selected project', err)})
+    }, [projectId])
+
+
     const [number, setNumber] = useState('');
     const [title, setTitle] = useState('');
     const [createdBy, setCreatedBy] = useState('');
@@ -16,7 +43,6 @@ const NewInstruction = () => {
     const [type, setType] = useState('');
     const navigate = useNavigate();
     const formRef = useRef();
-    const { projectId } = useParams();
 
     const handleNumberChange = (e) => {
         setNumber(e.target.value);
@@ -80,8 +106,8 @@ const NewInstruction = () => {
         <div className="new-si">
         <Sidebar/>
         <div className="new-si__container">
-            <h2 className='new-si__project-name'> props.project name </h2>
-            <h1 className='new-si__title'>NEW SITE INSTRUCTION</h1>
+            <h2 className='new-si__project-name'> {selectedProject?.name} {'>'} New Instruction </h2>
+            <h1 className='new-si__title'>NEW INSTRUCTION</h1>
 
             <form ref={formRef} onSubmit={handleSubmit} className="new-si__form">
                 <div className="new-si__inputs">

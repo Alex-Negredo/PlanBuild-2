@@ -30,14 +30,8 @@
         line-height: 155.2%; /* 69.84px */
     }
 
-    &__buttons-container {
-        display: flex;
-        justify-content: space-between;
-    }
-
     &__button-link {
         text-decoration: none;
-        margin: auto 0;
     }
 
     &__button {
@@ -50,33 +44,6 @@
         font-weight: 700;
         border: none;
         cursor: pointer;
-    }
-
-    &__search-container {
-        display: flex;
-        align-items: center;
-        border-radius: 50px;
-        padding: 5px;
-        background-color: #fff;
-        width: 250px;
-        height: 50px;
-    }
-
-    &__input {
-        border: none;
-        width: 100%;
-        font-size: 17px;
-        border: none;
-        outline: none;
-    }
-
-    &__input::placeholder {
-        font-size: 17px;
-    }
-
-    &__icon {
-        color: #999;
-        margin-right: 2px;
     }
 
     &__hr {
@@ -96,7 +63,7 @@
     &__header {
         display: flex;
         width: 100%;
-        // margin-left: 20px;
+        margin-left: 20px;
     }
 
     &__header-label {
@@ -106,7 +73,6 @@
         font-style: normal;
         font-weight: 700;
         line-height: 155.2%; /* 37.248px */
-        margin: 5px 0 5px 20px;
         width: 12.5%;
     }
         
@@ -165,7 +131,7 @@
     }
 
     &__projects-listing-title, &__header-label-title {
-        width: 30%;
+        width: 32.5%;
     }
 
     &__instructions {

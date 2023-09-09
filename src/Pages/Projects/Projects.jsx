@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import search from '../../assets/Search icon.svg';
 import { Link as Scroll } from "react-scroll";
-import PDFViewer from "../../components/PDFViewer/PDFViewer";
+import PDFViewer from "../../components/InstructionViewer/InstructionViewer";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Sidebar from "../../components/Sidebar/Sidebar";
@@ -46,9 +47,16 @@ const handleProjectClick = (id) => {
         <div className="projects__master-container">
               <h1 className='projects__title'>PROJECTS</h1>
 
-              <Link to="" className="projects__button-link">
-                <button className="projects__button">Create</button>
-              </Link>
+              <div className="projects__buttons-container">
+                <Link to={``} className="projects__button-link">
+                  <button className="projects__button">Create</button>
+                </Link>
+
+                <div className="projects__search-container">
+                  <input type="text" placeholder="Search project" className="projects__input" />
+                  <img src={search} className="projects__icn" />
+                </div>
+              </div>
           
             <hr className="projects__hr"/>
 

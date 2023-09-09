@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Link as Scroll } from "react-scroll";
 import { useParams } from "react-router-dom";
 import Sidebar from '../Sidebar/Sidebar';
-import PDFViewer from "../PDFViewer/PDFViewer";
+import PDFViewer from "../InstructionViewer/InstructionViewer";
 import DrawingViewer from '../DrawingViewer/DrawingViewer';
 import './DrawingPage.scss';
 
@@ -41,10 +41,9 @@ useEffect(() => {
 
       <Header />
       
-      <div className='drawing'>
-        <Sidebar />
-        <DrawingViewer selectedProject={selectedProject} />
-      </div>
+        <div>
+          <DrawingViewer selectedProject={selectedProject} />
+        </div>
 
     </div>
   )

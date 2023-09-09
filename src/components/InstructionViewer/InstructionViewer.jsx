@@ -3,10 +3,10 @@ import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
 
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 import '@react-pdf-viewer/core/lib/styles/index.css';
-import './PDFViewer.scss';
+import './InstructionViewer.scss';
 
 
-export default function PDFViewer(props) {
+export default function InstructionViewer(props) {
 
 
     const defaultLayoutPluginInstance = defaultLayoutPlugin();

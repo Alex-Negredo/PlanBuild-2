@@ -9,7 +9,14 @@ const Home = () => {
   return (
     <div className='home'>
 
+        <div className='home__master-container'>
+          <div className='home__first'>Make it easier to</div>
+          <div className='home__second'>manage construction.</div>
+          <div className='home__text'>Take control of construction outcomes, minimize risk and protect profits with PlanBuild’s top-rated construction management platform.</div>
+        </div>
+      
       <div className='home__container'>
+
         <div className='home__subcontainer'>
           <img src={logo} className='home__logo' />
           <h1 className='home__welcome'>Hi, welcome!</h1>
@@ -21,6 +28,7 @@ const Home = () => {
           <Link to={'./projects'}><button className='home__login-button'>LOGIN</button></Link>
           <h4 className='home__create-account'>Create an account, click here</h4>
         </div>
+
       </div>
 
     </div>

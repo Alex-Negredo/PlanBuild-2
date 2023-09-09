@@ -1,15 +1,14 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import search from '../../assets/Search icon.svg';
 import { Link } from "react-router-dom";
 import { Link as Scroll } from "react-scroll";
-import InstructionViewer from "../../components/InstructionViewer/InstructionViewer";
+import PDFViewer from "../../components/InstructionViewer/PDFViewer";
 import { useParams } from "react-router-dom";
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Header from "../../components/Header/Header";
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import "./Instructions.scss";
+import "./RFI.scss";
 
 function Instructions() {
 
@@ -70,18 +69,11 @@ const handleInstructionClick = (id) => {
         <div className="si__master-container">
 
               <h2 className='si__project-name'> {selectedProject?.name} {'>'} Instructions </h2>
-              <h1 className='si__title'>INSTRUCTIONS</h1>
+              <h1 className='si__title'>SITE INSTRUCTIONS</h1>
 
-              <div className="si__buttons-container">
-                <Link to={`/projects/${projectId}/instructions/new`} className="si__button-link">
-                  <button className="si__button">Create</button>
-                </Link>
-
-                <div className="si__search-container">
-                  <input type="text" placeholder="Search Instruction" className="si__input" />
-                  <img src={search} className="si__icon" />
-                </div>
-              </div>
+              <Link to={`/projects/${projectId}/instructions/new`} className="si__button-link">
+                <button className="si__button">Create</button>
+              </Link>
           
             <hr className="si__hr"/>
 
@@ -120,7 +112,7 @@ const handleInstructionClick = (id) => {
         </div>
 
           <div className="si__projects__PDFViewer" id='PDFViewer'>
-            <InstructionViewer instructions={instructions} selectedInstruction={selectedInstruction} /> 
+            <PDFViewer instructions={instructions} selectedInstruction={selectedInstruction} /> 
           </div>
 
 
