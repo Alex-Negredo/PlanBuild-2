@@ -29,7 +29,7 @@ function Sidebar() {
 
   // Fetch all projects
   useEffect( () => {
-    axios.get(`http://localhost:8080/projects`)
+    axios.get(`https://planbuild-api-2aa57d725286.herokuapp.com/projects`)
     .then(res => {
       setProjects(res.data);
       console.log(res.data);
@@ -40,7 +40,7 @@ function Sidebar() {
   // grab the projectId from the URL, fetch the current project and set selectedProject
   useEffect(() => {
     if (projectId) {
-      axios.get(`http://localhost:8080/projects/${projectId}`)
+      axios.get(`https://planbuild-api-2aa57d725286.herokuapp.com/projects/${projectId}`)
       .then(res => {
         setSelectedProject(res.data);
         console.log('selected project is', res.data);
@@ -51,7 +51,7 @@ function Sidebar() {
   // Fetch all instructions for the selected project
   useEffect( () => {
     if (projectId) {
-      axios.get(`http://localhost:8080/projects/${projectId}/instructions`)
+      axios.get(`https://planbuild-api-2aa57d725286.herokuapp.com/projects/${projectId}/instructions`)
       .then(res => {
         setInstructions(res.data);
         console.log(res.data);
@@ -62,7 +62,7 @@ function Sidebar() {
   // Fetch all instructions for the selected project
   useEffect( () => {
     if (projectId) {
-      axios.get(`http://localhost:8080/projects/${projectId}/specifications`)
+      axios.get(`https://planbuild-api-2aa57d725286.herokuapp.com/projects/${projectId}/specifications`)
       .then(res => {
         setSpecifications(res.data);
         console.log(res.data);

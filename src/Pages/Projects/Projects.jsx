@@ -19,7 +19,7 @@ const [instructions, setInstructions] = useState([]);
 
 
 useEffect( () => {
-  axios.get(`http://localhost:8080/projects`)
+  axios.get(`https://planbuild-api-2aa57d725286.herokuapp.com/projects`)
   .then(res => {
     setProjects(res.data);
     console.log(res.data);
