@@ -14,17 +14,16 @@ import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import MonetizationOnRoundedIcon from "@mui/icons-material/MonetizationOnRounded";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from 'react';
-import { useParams, redirect } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './Sidebar.scss';
 
 function Sidebar() {
 
   const { projectId } = useParams();
-  const [projects, setProjects] = useState([]);
-  const [instructions, setInstructions] = useState([]);
-  const [specifications, setSpecifications] = useState([]);
-  const [selectedInstruction, setSelectedInstruction] = useState();
+  const [ projects, setProjects] = useState([]);
+  const [ instructions, setInstructions] = useState([]);
+  const [ specifications, setSpecifications] = useState([]);
   const [selectedProject, setSelectedProject] = useState();
 
   // Fetch all projects
@@ -35,7 +34,7 @@ function Sidebar() {
       console.log(res.data);
     })
     .catch(err => {console.log('my error getting projects is', err)})
-  }, [])
+  }, [projects])
 
   // grab the projectId from the URL, fetch the current project and set selectedProject
   useEffect(() => {
@@ -43,7 +42,6 @@ function Sidebar() {
       axios.get(`https://planbuild-api-2aa57d725286.herokuapp.com/projects/${projectId}`)
       .then(res => {
         setSelectedProject(res.data);
-        console.log('selected project is', res.data);
       })
       .catch(err => {console.log('error getting selected project', err)})
     }}, [projectId])
@@ -54,10 +52,9 @@ function Sidebar() {
       axios.get(`https://planbuild-api-2aa57d725286.herokuapp.com/projects/${projectId}/instructions`)
       .then(res => {
         setInstructions(res.data);
-        console.log(res.data);
       })
     .catch(err => {console.log('error getting all instructions', err)})
-  }}, [projectId])
+  }}, [projectId, instructions])
 
   // Fetch all instructions for the selected project
   useEffect( () => {
@@ -65,10 +62,9 @@ function Sidebar() {
       axios.get(`https://planbuild-api-2aa57d725286.herokuapp.com/projects/${projectId}/specifications`)
       .then(res => {
         setSpecifications(res.data);
-        console.log(res.data);
       })
       .catch(err => {console.log('error getting all specifications', err)})
-  }}, [projectId])
+  }}, [projectId, specifications])
 
   return (
     <div style={{ display: "flex", height: "100vh" }}>

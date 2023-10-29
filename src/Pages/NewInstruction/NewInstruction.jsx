@@ -10,17 +10,15 @@ const NewInstruction = () => {
     const [projects, setProjects] = useState([]); 
     const [selectedProject, setSelectedProject] = useState();
     const [instructions, setInstructions] = useState([]);
-    const [selectedInstruction, setSelectedInstruction] = useState();
 
     // Fetch all projects
     useEffect( () => {
     axios.get(`https://planbuild-api-2aa57d725286.herokuapp.com/projects`)
     .then(res => {
         setProjects(res.data);
-        console.log(res.data);
     })
     .catch(err => {console.log('my error getting projects is', err)})
-    }, [])
+    }, [projects])
 
 
     // grab the projectId from the URL, fetch the current project and set selectedProject

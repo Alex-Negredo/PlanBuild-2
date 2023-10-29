@@ -27,7 +27,7 @@ useEffect( () => {
     console.log(res.data);
   })
   .catch(err => {console.log('my error getting projects is', err)})
-}, [])
+}, [projects])
 
 
 // grab the projectId from the URL, fetch the current project and set selectedProject
@@ -79,7 +79,7 @@ const handleInstructionClick = (id) => {
 
                 <div className="si__search-container">
                   <input type="text" placeholder="Search Instruction" className="si__input" />
-                  <img src={search} className="si__icon" />
+                  <img src={search} className="si__icon" alt="" />
                 </div>
               </div>
           

@@ -27,7 +27,7 @@ useEffect( () => {
     console.log(res.data);
   })
   .catch(err => {console.log('my error getting projects is', err)})
-}, [])
+}, [projects])
 
 
 // grab the projectId from the URL, fetch the current project and set selectedProject
@@ -79,7 +79,7 @@ const handleSpecificationClick = (id) => {
 
                 <div className="spec__search-container">
                   <input type="text" placeholder="Search Spec" className="spec__input" />
-                  <img src={search} className="spec__icon" />
+                  <img src={search} className="spec__icon" alt="" />
                 </div>
               </div>
           

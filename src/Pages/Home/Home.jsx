@@ -1,8 +1,6 @@
 import React from 'react'
 import logo from '../../assets/LogoBlue&Black.svg'
-import Header from '../../components/Header/Header'
 import { Link } from 'react-router-dom'
-import Projects from '../Projects/Projects'
 import './Home.scss'
 
 const Home = () => {
@@ -18,7 +16,7 @@ const Home = () => {
       <div className='home__container'>
 
         <div className='home__subcontainer'>
-          <img src={logo} className='home__logo' />
+          <img src={logo} className='home__logo' alt='' />
           <h1 className='home__welcome'>Hi, welcome!</h1>
           <div className='home__inputs'>
             <input className='home__input' placeholder='Name or Username' type='text' />

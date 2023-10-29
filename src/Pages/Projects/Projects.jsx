@@ -1,21 +1,15 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import search from '../../assets/Search icon.svg';
-import { Link as Scroll } from "react-scroll";
-import PDFViewer from "../../components/InstructionViewer/InstructionViewer";
-import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import "./Projects.scss";
 import Header from "../../components/Header/Header";
-import Instructions from "../Instructions/Instructions";
 
 function Projects() {
 
-const { id } = useParams();
 const [projects, setProjects] = useState([]);
 const [selectedProject, setSelectedProject] = useState();
-const [instructions, setInstructions] = useState([]);
 
 
 useEffect( () => {
@@ -54,7 +48,7 @@ const handleProjectClick = (id) => {
 
                 <div className="projects__search-container">
                   <input type="text" placeholder="Search project" className="projects__input" />
-                  <img src={search} className="projects__icn" />
+                  <img src={search} className="projects__icn" alt="" />
                 </div>
               </div>
           

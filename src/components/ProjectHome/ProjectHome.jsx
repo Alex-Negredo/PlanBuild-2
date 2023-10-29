@@ -3,7 +3,7 @@ import Header from '../Header/Header';
 import Sidebar from '../Sidebar/Sidebar';
 import './ProjectHome.scss';
 
-const ProjectHome = (props) => {
+const ProjectHome = () => {
 
     return (
         <div>

@@ -1,11 +1,7 @@
 import Header from '../Header/Header'
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import { Link as Scroll } from "react-scroll";
 import { useParams } from "react-router-dom";
-import Sidebar from '../Sidebar/Sidebar';
-import PDFViewer from "../InstructionViewer/InstructionViewer";
 import DrawingViewer from '../DrawingViewer/DrawingViewer';
 import './DrawingPage.scss';
 
@@ -23,7 +19,7 @@ useEffect( () => {
     console.log(res.data);
   })
   .catch(err => {console.log('my error getting projects is', err)})
-}, [])
+}, [projects])
 
 
 // grab the projectId from the URL, fetch the current project and set selectedProject
